@@ -1,0 +1,77 @@
+Formas de debugar:
+
+1 - via REPL
+2 - via navegador
+3 - via Docker
+3 - via VSCode + Máquina Local
+4 - via VSCode + Docker
+5 - via VSCode + máquina remota
+
+
+// node 13 - exemplo 01
+
+- criar HTTP API - power somar todos os parametros que forem enviados
+
+
+ 
+ node inspect app/server.js
+    continue
+        run curl
+    debugger - 15
+    restart
+    remove debugger 
+    r
+    list(30)
+    setBreakpoint(21)
+    scripts
+    continue
+        run curl
+    scripts
+    step
+    continue
+        run curl
+    exec body
+    exec result = 10 
+    continue
+
+    -> show results
+    repl
+    for (let i=0; i<100; i++) { console.log(i)}
+    exit
+    .save session01
+node --inspect=0.0.0.0 app/server.js
+    - inpect -> mostrar step into, watcher
+
+VSCode
+    - F5 
+        "program": "${workspaceFolder}/app/server.js"
+    mostrar step into, watcher
+        disable breakPoint
+        curl 
+        enable breakPoint
+        show debug console 
+Docker
+    - create Dockerfile
+    - create run.sh 
+    - go to the browser 
+        - breakPoint 
+        - curl 
+    - attach to VSCode
+        - create lauch.json
+            - configurations: ctrl+ space 
+                Docker attach 
+                add remoteRoot
+                add localRoot: 
+                
+        {
+            "configurations": [
+                {
+                    "type": "node",
+                    "request": "attach",
+                    "name": "Docker: Attach to Node",
+                    "remoteRoot": ".",
+                    "localRoot": "${workspaceFolder}/app/"
+                    // falar sobre address -> maquina remota
+                }
+            ]
+        }
