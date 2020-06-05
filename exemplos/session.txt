@@ -1,0 +1,33 @@
+list(100)
+c
+exec body
+exec counter
+c
+r
+list(100)
+sb(19)
+c
+step
+exec args
+step
+exec next
+out
+out
+exec result
+c
+r
+list(100)
+cb('server.js', 19)
+breakpoints
+watch('counter')
+watch('counter > 2')
+c
+r
+list(100)
+sb(17)
+c
+c
+c
+c
+repl
+for(let i=0; i< 100; i++){ console.log(i) }
